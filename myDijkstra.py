@@ -5,10 +5,9 @@ import sys
 
 from utils import readAdjacencyMatrix, pathString
 
-
 def main():
     adjacency_matrix, start, end = readAdjacencyMatrix(
-        "test_cases/test_case_4.txt")
+        sys.argv[1])
     path, dist = djikstras(adjacency_matrix, start, end)
     print(pathString(path, start, end))
     print("Cost: " + str(dist))
