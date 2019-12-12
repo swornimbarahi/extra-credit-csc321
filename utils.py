@@ -13,17 +13,19 @@
   @returns  end
               the destination node for the algorithm
 """
-def readAdjacencyMatrix(filepath):
+def readFileToAdjacencyList(filepath):
     matrixFile = list(open(filepath, "r"))
-    matrix = []
+    adjacencyList = {}
     for i in range(1, len(list(matrixFile))):
-        line = []
-        for distance in matrixFile[i].strip().split(' '):
-            line.append(float(distance))
-        matrix.append(line)
+        line = {}
+        lineContent = matrixFile[i].strip().split(' ')
+        for idx in range(len(lineContent)):
+            if float(lineContent[idx]) != 0.0:
+              line[idx] = float(lineContent[idx])
+        adjacencyList[i - 1] = line
     start = int(matrixFile[0].strip().split(' ')[0])
     end = int(matrixFile[0].strip().split(' ')[1])
-    return matrix, start, end
+    return adjacencyList, start, end
 
 
 """

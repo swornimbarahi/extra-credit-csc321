@@ -2,7 +2,7 @@
 import unittest
 import warnings
 
-from utils import readAdjacencyMatrix, pathString
+from utils import readFileToAdjacencyList, pathString
 from myDijkstra import djikstras
 
 
@@ -12,12 +12,13 @@ def ignore_warnings(test_func):
             warnings.simplefilter("ignore")
             test_func(self, *args, **kwargs)
     return start_test
-    
+
+
 class TestDijkstra(unittest.TestCase):
 
     @ignore_warnings
     def test_0(self):
-        adjacency_matrix, start, end = readAdjacencyMatrix(
+        adjacency_matrix, start, end = readFileToAdjacencyList(
         "test_cases/test_case_0.txt")
         path, dist = djikstras(adjacency_matrix, start, end)
         self.assertEqual(pathString(path, start, end), "0-3-2")
@@ -27,7 +28,7 @@ class TestDijkstra(unittest.TestCase):
     
     @ignore_warnings
     def test_1(self):
-        adjacency_matrix, start, end = readAdjacencyMatrix(
+        adjacency_matrix, start, end = readFileToAdjacencyList(
         "test_cases/test_case_1.txt")
         path, dist = djikstras(adjacency_matrix, start, end)
         self.assertEqual(pathString(path, start, end), "2-3-0-9")
@@ -37,7 +38,7 @@ class TestDijkstra(unittest.TestCase):
 
     @ignore_warnings
     def test_2(self):
-        adjacency_matrix, start, end = readAdjacencyMatrix(
+        adjacency_matrix, start, end = readFileToAdjacencyList(
         "test_cases/test_case_2.txt")
         path, dist = djikstras(adjacency_matrix, start, end)
         self.assertEqual(pathString(path, start, end), "25-14-2-9-4-3")
@@ -47,7 +48,7 @@ class TestDijkstra(unittest.TestCase):
 
     @ignore_warnings
     def test_3(self):
-        adjacency_matrix, start, end = readAdjacencyMatrix(
+        adjacency_matrix, start, end = readFileToAdjacencyList(
         "test_cases/test_case_3.txt")
         path, dist = djikstras(adjacency_matrix, start, end)
         self.assertEqual(pathString(path, start, end), "7-16-19")
@@ -57,7 +58,7 @@ class TestDijkstra(unittest.TestCase):
 
     @ignore_warnings
     def test_4(self):
-        adjacency_matrix, start, end = readAdjacencyMatrix(
+        adjacency_matrix, start, end = readFileToAdjacencyList(
         "test_cases/test_case_4.txt")
         path, dist = djikstras(adjacency_matrix, start, end)
         self.assertEqual(pathString(path, start, end), "33-18-27-13-1")
