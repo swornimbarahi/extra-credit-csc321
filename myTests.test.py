@@ -12,6 +12,7 @@ def ignore_warnings(test_func):
             warnings.simplefilter("ignore")
             test_func(self, *args, **kwargs)
     return start_test
+    
 class TestDijkstra(unittest.TestCase):
 
     @ignore_warnings
